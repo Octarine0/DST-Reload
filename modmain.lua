@@ -1,15 +1,9 @@
---local require = GLOBAL.require
-
 local primaryKey = GLOBAL.tonumber(GetModConfigData("PRIMARY_KEY"))
---local secondaryKey = GetModConfigData("SECONDARY_KEY")
 local secondaryKey = GLOBAL.tonumber(GetModConfigData("SECONDARY_KEY"))
 local skipSKey = false
 if(secondaryKey == 0) then
 	skipSKey = true;
 end
-
---primaryKey = GLOBAL.tonumber(primaryKey)
---secondaryKey = GLOBAL.tonumber(secondaryKey)
 
 AddSimPostInit(function()
 	GLOBAL.TheInput:AddKeyHandler(
