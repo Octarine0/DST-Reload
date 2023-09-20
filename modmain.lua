@@ -1,14 +1,31 @@
-local require = GLOBAL.require
+--local require = GLOBAL.require
 
-primaryKey = GetModConfigData("PRIMARY_KEY")
-secondaryKey = GetModConfigData("SECONDARY_KEY")
+local primaryKey = GLOBAL.tonumber(GetModConfigData("PRIMARY_KEY"))
+--local secondaryKey = GetModConfigData("SECONDARY_KEY")
+local secondaryKey = GLOBAL.tonumber(GetModConfigData("SECONDARY_KEY"))
+local skipSKey = false
+if(secondaryKey == 0) then
+	skipSKey = true;
+end
+
+--primaryKey = GLOBAL.tonumber(primaryKey)
+--secondaryKey = GLOBAL.tonumber(secondaryKey)
 
 AddSimPostInit(function()
 	GLOBAL.TheInput:AddKeyHandler(
 	function(key, down)
-		if not down then return end -- Only trigger on key press
+		print("Hello There...")
+		print(primaryKey)
+		print(key)
+		print(down)
+		print(secondaryKey)
+		local keyPass = skipSKey
+		if not down or keyPass then return end -- Only trigger on key press
 		-- Require CTRL for any debug keybinds
-		if GLOBAL.TheInput:IsKeyDown(secondaryKey) or secondaryKey == nil then
+		if (not keyPass) then
+			keyPass = GLOBAL.TheInput:IsKeyDown(secondaryKey)
+		end
+		if keyPass then
 			 -- Load latest save and run latest scripts
 			if key == primaryKey then
 				if GLOBAL.TheWorld.ismastersim then
