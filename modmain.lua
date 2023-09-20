@@ -14,11 +14,11 @@ end
 AddSimPostInit(function()
 	GLOBAL.TheInput:AddKeyHandler(
 	function(key, down)
-		print("Hello There...")
-		print(primaryKey)
-		print(key)
-		print(down)
-		print(secondaryKey)
+		--print("Hello There...")
+		--print(primaryKey)
+		--print(key)
+		--print(down)
+		--print(secondaryKey)
 		local keyPass = skipSKey
 		if not down or keyPass then return end -- Only trigger on key press
 		-- Require CTRL for any debug keybinds
